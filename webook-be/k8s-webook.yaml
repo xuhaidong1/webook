@@ -1,0 +1,41 @@
+# kubectl apply -f k8s-webook-service.yaml
+# kubectl get services
+# kubectl logs webook-5f7bd5f65b-8pnlb
+# kubectl delete deployment webook-mysql-k8s webook-redis webook
+apiVersion: v1
+kind: Service
+metadata:
+  name: webook
+spec:
+  selector:
+    app: webook
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8081
+  type: LoadBalancer
+
+---
+#  kubectl apply -f k8s-webook-deployment.yaml
+#  kubectl get deployments
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webook
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: webook
+      #template描述pod是什么样的
+  template:
+    metadata:
+      labels:
+        app: webook
+        #pod具体信息
+    spec:
+      containers:
+        - name: webook
+          image: xuhaidong/webook:v0.0.2
+          ports:
+            - containerPort: 8081

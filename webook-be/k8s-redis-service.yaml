@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: webook-redis
+spec:
+  selector:
+    app: webook-redis
+  ports:
+    - protocol: TCP
+      port: 6380
+      targetPort: 6379
+      nodePort: 30003
+  type: NodePort
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webook-redis
+  labels:
+    app: webook-redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webook-redis
+  template:
+    metadata:
+      name: webook-redis
+      labels:
+        app: webook-redis
+    spec:
+      containers:
+        - name: webook-redis
+          image: redis:latest
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
