@@ -4,14 +4,14 @@ import (
 	"context"
 	"errors"
 	"github.com/go-sql-driver/mysql"
-	"github.com/xuhaidong1/webook/webook-be/internal/domain"
+	"github.com/xuhaidong1/webook/internal/domain"
 	"gorm.io/gorm"
 	"time"
 )
 
 var (
 	ErrUserDuplicateEmail = errors.New("邮箱冲突")
-	ErrUserNotFound       = gorm.ErrRecordNotFound
+	ErrNotFound           = gorm.ErrRecordNotFound
 )
 
 type UserDAO struct {

@@ -3,8 +3,8 @@ package service
 import (
 	"context"
 	"errors"
-	"github.com/xuhaidong1/webook/webook-be/internal/domain"
-	"github.com/xuhaidong1/webook/webook-be/internal/repository"
+	"github.com/xuhaidong1/webook/internal/domain"
+	"github.com/xuhaidong1/webook/internal/repository"
 	"golang.org/x/crypto/bcrypt"
 	"time"
 )

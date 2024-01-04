@@ -2,13 +2,13 @@ package repository
 
 import (
 	"context"
-	"github.com/xuhaidong1/webook/webook-be/internal/domain"
-	"github.com/xuhaidong1/webook/webook-be/internal/repository/dao"
+	"github.com/xuhaidong1/webook/internal/domain"
+	"github.com/xuhaidong1/webook/internal/repository/dao"
 )
 
 var (
 	ErrUserDuplicateEmail = dao.ErrUserDuplicateEmail
-	ErrUserNotFound       = dao.ErrUserNotFound
+	ErrUserNotFound       = dao.ErrNotFound
 )
 
 type UserRepository struct {
